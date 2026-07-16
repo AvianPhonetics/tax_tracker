@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Freelancer Tax Deduction Tracker – Save on Taxes</title>
-  <meta name="description" content="Google Sheets tax tracker for freelancers. Automatically calculates quarterly taxes, tracks 50+ deductions, saves thousands. Only $7 today." />
-  <meta property="og:title" content="Freelancer Tax Tracker – Stop Overpaying" />
-  <meta property="og:description" content="The simple spreadsheet that saves freelancers $1,000s every year. No accountant needed." />
+  <title>Personal Finance Tracker – Income, Expenses, Taxes</title>
+  <meta name="description" content="Standalone HTML app to track income, expenses, and estimate taxes. No sign-ups, no cloud, 100% private. One-time payment." />
+  <meta property="og:title" content="Personal Finance Tracker – Smart & Private" />
+  <meta property="og:description" content="Track your finances in a simple HTML app. Works offline, stores data locally." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630/eef2ff/2563eb?text=Tax+Tracker" />
+  <meta property="og:image" content="https://placehold.co/1200x630/eef2ff/2563eb?text=Finance+Tracker" />
   <meta name="twitter:card" content="summary_large_image" />
   <style>
     * {
@@ -102,6 +102,7 @@
       margin-bottom: 12px;
     }
 
+    /* Price block – now placed at the bottom */
     .price-block {
       background: linear-gradient(135deg, #ffffff 0%, #f3f9ff 100%);
       border-radius: 28px;
@@ -109,9 +110,6 @@
       text-align: center;
       box-shadow: 0 12px 40px rgba(0, 20, 50, 0.08);
       border: 1px solid rgba(37, 99, 235, 0.12);
-      margin-top: -20px;
-      position: relative;
-      z-index: 2;
       transition: transform 0.2s;
     }
     .price-block:hover {
@@ -221,6 +219,7 @@
       color: #2c3e66;
     }
 
+    /* Final CTA – now includes the price block */
     .cta {
       text-align: center;
       background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
@@ -268,10 +267,6 @@
       .hero {
         padding: 30px 16px 24px;
       }
-      .price-block {
-        margin-top: -10px;
-        padding: 24px 16px;
-      }
     }
   </style>
 </head>
@@ -280,82 +275,90 @@
 
   <!-- Hero (без цены) -->
   <section class="hero">
-    <div class="badge">🔥 Trusted by 2,500+ freelancers</div>
-    <h1>Stop Overpaying Taxes.<br />Track Deductions Like a Pro.</h1>
-    <p class="sub">The simple Google Sheet that saves freelancers $1,000s every year – no accountant needed.</p>
+    <div class="badge">🔥 Trusted by 2,500+ users</div>
+    <h1>Track Your Finances Smartly.<br />Income, Expenses, Taxes – All in One App.</h1>
+    <p class="sub">A standalone HTML app that runs in your browser. No sign‑ups, no cloud, no data leaks. One‑time payment.</p>
   </section>
 
-  <!-- Блок с ценой (перенесён ниже) -->
+  <!-- Benefits (разъяснение) -->
+  <section class="benefits">
+    <h2>Why You'll Love This Tracker</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">📊</div>
+        <h3>Automated Calculations</h3>
+        <p>Total income, expenses, net profit – all updated in real time as you add transactions.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🧾</div>
+        <h3>Smart Tax Estimation</h3>
+        <p>Get a rough estimate of what you might owe – helps you set aside money for taxes.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱️</div>
+        <h3>5 Seconds to Add</h3>
+        <p>Log income or expenses quickly. The dashboard updates instantly – no manual math.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔒</div>
+        <h3>100% Private</h3>
+        <p>All data stays on your device. No cloud, no servers, no tracking – your finances are yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview -->
+  <section class="preview">
+    <h2>See It in Action</h2>
+    <img src="https://placehold.co/600x400/eef2ff/2563eb?text=Finance+Tracker+App+Preview" alt="App screenshot" loading="lazy" />
+    <p>Clean, simple interface – works on desktop, tablet, and phone.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Common Questions</h2>
+    <details>
+      <summary>💻 How do I use the app?</summary>
+      <p>Download the HTML file, double‑click to open it in your browser. No installation needed – it just works.</p>
+    </details>
+    <details>
+      <summary>🔒 Is my financial data safe?</summary>
+      <p>Yes. Everything is stored locally in your browser's storage. We never see your data.</p>
+    </details>
+    <details>
+      <summary>📱 Does it work on mobile?</summary>
+      <p>Absolutely – the app is responsive and works on phones and tablets.</p>
+    </details>
+    <details>
+      <summary>🔄 What if I lose the file?</summary>
+      <p>You can re‑download it anytime from your purchase history. We also recommend keeping a backup.</p>
+    </details>
+    <details>
+      <summary>🛡️ Is there a guarantee?</summary>
+      <p>Yes – 14‑day happiness guarantee. If you're not satisfied, we'll refund you.</p>
+    </details>
+  </section>
+
+  <!-- Блок с ценой (теперь внизу) -->
   <section class="price-block">
     <div class="old-price">Regular $19</div>
     <div class="new-price">$7</div>
     <div class="offer-tag">🔥 Launch offer – price goes up soon</div>
     <br />
-    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn">📥 Get Instant Access</a>
-    <p style="margin-top:12px; font-size:0.9rem; color:#3b5a7a;">Instant copy to your Google Drive • Free updates</p>
+    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn">📥 Get the App</a>
+    <p style="margin-top:12px; font-size:0.9rem; color:#3b5a7a;">Instant download • Free lifetime updates</p>
   </section>
 
-  <!-- Преимущества -->
-  <section class="benefits">
-    <h2>Why Freelancers Love This Tracker</h2>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">📊</div>
-        <h3>Automated Calculations</h3>
-        <p>Formulas do the math – estimated quarterly taxes, net profit, and deduction totals.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🧾</div>
-        <h3>50+ Deduction Prompts</h3>
-        <p>Home office, internet, software, courses – never miss a write‑off again.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">⏱️</div>
-        <h3>Done in 5 Minutes a Month</h3>
-        <p>Log income & expenses quickly. The summary dashboard updates automatically.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🇺🇸</div>
-        <h3>Built for US Freelancers</h3>
-        <p>Follows IRS Schedule C logic, including self‑employment tax estimation.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Превью -->
-  <section class="preview">
-    <h2>Take a Look Inside</h2>
-    <img src="https://placehold.co/600x400/eef2ff/2563eb?text=Tax+Tracker+Spreadsheet+Preview" alt="Spreadsheet preview" loading="lazy" />
-    <p>Clean, color‑coded tabs – no clutter, just the numbers that matter.</p>
-  </section>
-
-  <!-- FAQ (без отзывов) -->
-  <section class="faq">
-    <h2>Common Questions</h2>
-    <details>
-      <summary>💻 How do I get the file?</summary>
-      <p>After purchase you'll receive a PDF with a Google Sheets link. Click “Make a copy” and it's yours.</p>
-    </details>
-    <details>
-      <summary>📅 Does it work for any year?</summary>
-      <p>Yes, it's undated – just log transactions as they happen. Tax brackets are based on current IRS guidelines (updated annually).</p>
-    </details>
-    <details>
-      <summary>🔄 What if I'm not satisfied?</summary>
-      <p>We offer a 14‑day happiness guarantee. Just reply to your receipt email and we'll refund you.</p>
-    </details>
-  </section>
-
-  <!-- Финальный призыв -->
+  <!-- Финальный призыв (уже не дублирует цену, просто дополнительный push) -->
   <section class="cta">
-    <h2>Make Tax Time Stress‑Free</h2>
-    <p>Join 2,500+ freelancers who already use this tracker. Grab it for $7 today.</p>
-    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn btn-secondary">🚀 Get the Tracker Now</a>
-    <p style="margin-top:14px; font-size:0.9rem;">Instant delivery · 14‑day money‑back guarantee</p>
+    <h2>Take Control of Your Finances Today</h2>
+    <p>Join thousands who already use this simple, private, and powerful tracker.</p>
+    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn btn-secondary">🚀 Get the App Now</a>
+    <p style="margin-top:14px; font-size:0.9rem;">Instant download · 14‑day money‑back guarantee</p>
   </section>
 
   <footer>
-    <p>© 2025 TaxTracker. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Support</a></p>
+    <p>© 2025 FinanceTracker. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Support</a></p>
   </footer>
 
 </div>
