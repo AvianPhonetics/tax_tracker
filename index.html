@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelancer's Tax Deduction Tracker – Save on Taxes</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 20px; }
+    section { margin-bottom: 50px; }
+    h1 { font-size: 2.4rem; font-weight: 700; line-height: 1.2; }
+    h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 30px; }
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+
+    /* Hero */
+    .hero { text-align: center; padding: 30px 0 20px; }
+    .hero p.sub { font-size: 1.2rem; color: #4b5563; margin: 15px 0 25px; }
+    .price-box {
+      background: #f3f4f6; padding: 20px; border-radius: 16px;
+      display: inline-block; margin-bottom: 25px;
+    }
+    .old-price { text-decoration: line-through; color: #9ca3af; font-size: 1.1rem; }
+    .new-price { font-size: 2.5rem; font-weight: 700; color: #2563eb; margin: 5px 0; }
+
+    /* Benefits */
+    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .benefit-card {
+      background: #f8fafc; padding: 20px; border-radius: 14px; text-align: center;
+    }
+    .benefit-icon { font-size: 2rem; margin-bottom: 8px; }
+
+    /* Preview */
+    .preview { text-align: center; }
+    .preview img {
+      max-width: 100%; border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;
+    }
+
+    /* Testimonials */
+    .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
+    .testimonial {
+      background: #fff; border: 1px solid #e5e7eb; padding: 20px;
+      border-radius: 14px; display: flex; gap: 15px; align-items: flex-start;
+    }
+    .avatar { font-size: 2.5rem; background: #eef2ff; width: 50px; height: 50px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    /* FAQ */
+    details {
+      background: #f9fafb; padding: 15px 20px; border-radius: 12px; margin-bottom: 10px;
+    }
+    summary { font-weight: 600; cursor: pointer; list-style: none; }
+
+    /* CTA */
+    .cta {
+      text-align: center; background: linear-gradient(135deg, #eff6ff, #e0e7ff);
+      border-radius: 24px; padding: 40px 20px;
+    }
+
+    footer { text-align: center; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e5e7eb; padding-top: 20px; }
+
+    @media (max-width: 500px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Stop Overpaying Taxes.<br>Track Deductions Like a Pro.</h1>
+    <p class="sub">The simple Google Sheet that saves freelancers $1,000s every year – no accountant needed.</p>
+    <div class="price-box">
+      <div class="old-price">Regular $19</div>
+      <div class="new-price">$7</div>
+      <div style="color:#2563eb; font-weight:500;">🔥 Launch offer – price goes up soon</div>
+    </div>
+    <a href="YOUR_GUMROAD_LINK_HERE" class="btn">📥 Get Instant Access</a>
+    <p style="margin-top:12px; font-size:0.9rem; color:#6b7280;">Instant copy to your Google Drive • Free updates</p>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits">
+    <h2>Why Freelancers Love This Tracker</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">📊</div>
+        <h3>Automated Calculations</h3>
+        <p>Formulas do the math – estimated quarterly taxes, net profit, and deduction totals.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🧾</div>
+        <h3>50+ Deduction Prompts</h3>
+        <p>Home office, internet, software, courses – never miss a write‑off again.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱️</div>
+        <h3>Done in 5 Minutes a Month</h3>
+        <p>Log income & expenses quickly. The summary dashboard updates automatically.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🇺🇸</div>
+        <h3>Built for US Freelancers</h3>
+        <p>Follows IRS Schedule C logic, including self‑employment tax estimation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview -->
+  <section class="preview">
+    <h2>Take a Look Inside</h2>
+    <img src="https://placehold.co/600x400/eef2ff/2563eb?text=Tax+Tracker+Spreadsheet+Preview" alt="Spreadsheet preview">
+    <p style="margin-top:10px; color:#6b7280;">Clean, color‑coded tabs – no clutter, just the numbers that matter.</p>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>Hear from Fellow Freelancers</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="avatar">👩‍💻</div>
+        <div>
+          <strong>Sarah M., Graphic Designer</strong>
+          <p>“Finally a sheet that makes tax season bearable. I found deductions I hadn't even thought of – saved over $800 last year.”</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="avatar">🧑‍💼</div>
+        <div>
+          <strong>David R., Marketing Consultant</strong>
+          <p>“I was scared of quarterly taxes. This tracker showed me exactly what I owed. Set up in two minutes. Highly recommend!”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Common Questions</h2>
+    <details>
+      <summary>💻 How do I get the file?</summary>
+      <p>After purchase you'll receive a PDF with a Google Sheets link. Click “Make a copy” and it's yours.</p>
+    </details>
+    <details>
+      <summary>📅 Does it work for any year?</summary>
+      <p>Yes, it's undated – just log transactions as they happen. Tax brackets are based on current IRS guidelines (updated annually).</p>
+    </details>
+    <details>
+      <summary>🔄 What if I'm not satisfied?</summary>
+      <p>We offer a 14-day happiness guarantee. Just reply to your receipt email and we'll refund you.</p>
+    </details>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cta">
+    <h2>Make Tax Time Stress‑Free</h2>
+    <p>Join 2,500+ freelancers who already use this tracker. Grab it for $7 today.</p>
+    <a href="YOUR_GUMROAD_LINK_HERE" class="btn">🚀 Get the Tracker Now</a>
+    <p style="margin-top:12px; font-size:0.9rem;">Instant delivery · 14-day money-back guarantee</p>
+  </section>
+
+  <footer>
+    <p>© 2025 TaxTracker. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Support</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
