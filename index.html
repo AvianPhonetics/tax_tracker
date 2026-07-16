@@ -1,107 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freelancer's Tax Deduction Tracker – Save on Taxes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freelancer Tax Deduction Tracker – Save on Taxes</title>
+  <meta name="description" content="Google Sheets tax tracker for freelancers. Automatically calculates quarterly taxes, tracks 50+ deductions, saves thousands. Only $7 today." />
+  <meta property="og:title" content="Freelancer Tax Tracker – Stop Overpaying" />
+  <meta property="og:description" content="The simple spreadsheet that saves freelancers $1,000s every year. No accountant needed." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/eef2ff/2563eb?text=Tax+Tracker" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #ffffff;
-      color: #1a1a1a;
-      line-height: 1.6;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .container { max-width: 720px; margin: 0 auto; padding: 20px; }
-    section { margin-bottom: 50px; }
-    h1 { font-size: 2.4rem; font-weight: 700; line-height: 1.2; }
-    h2 { font-size: 1.8rem; font-weight: 700; text-align: center; margin-bottom: 30px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fafcff;
+      color: #0b1a33;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 30px;
+      letter-spacing: -0.01em;
+    }
+    .sub {
+      font-size: 1.2rem;
+      color: #2c3e66;
+      max-width: 600px;
+      margin: 16px auto 0;
+    }
+
     .btn {
       display: inline-block;
       background: #2563eb;
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
-      padding: 16px 40px;
-      border-radius: 50px;
+      padding: 18px 44px;
+      border-radius: 60px;
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(37,99,235,0.3);
-      transition: 0.2s;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+      transition: all 0.25s ease;
       border: none;
       cursor: pointer;
     }
-    .btn:hover { background: #1d4ed8; transform: translateY(-2px); }
-
-    /* Hero */
-    .hero { text-align: center; padding: 30px 0 20px; }
-    .hero p.sub { font-size: 1.2rem; color: #4b5563; margin: 15px 0 25px; }
-    .price-box {
-      background: #f3f4f6; padding: 20px; border-radius: 16px;
-      display: inline-block; margin-bottom: 25px;
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.45);
     }
-    .old-price { text-decoration: line-through; color: #9ca3af; font-size: 1.1rem; }
-    .new-price { font-size: 2.5rem; font-weight: 700; color: #2563eb; margin: 5px 0; }
+    .btn-secondary {
+      background: #0b1a33;
+      box-shadow: 0 8px 24px rgba(11, 26, 51, 0.2);
+    }
+    .btn-secondary:hover {
+      background: #1a2f4f;
+      box-shadow: 0 12px 32px rgba(11, 26, 51, 0.3);
+    }
 
-    /* Benefits */
-    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .hero {
+      text-align: center;
+      padding: 30px 0 20px;
+      background: linear-gradient(135deg, #eef6ff 0%, #ffffff 70%);
+      border-radius: 32px;
+      padding: 50px 20px 40px;
+      margin-bottom: 30px;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e4b8a;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 6px 18px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+    .hero h1 {
+      margin-bottom: 12px;
+    }
+
+    .price-block {
+      background: linear-gradient(135deg, #ffffff 0%, #f3f9ff 100%);
+      border-radius: 28px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 20, 50, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      margin-top: -20px;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.2s;
+    }
+    .price-block:hover {
+      transform: scale(1.01);
+    }
+    .price-block .old-price {
+      text-decoration: line-through;
+      color: #94a3b8;
+      font-size: 1.2rem;
+    }
+    .price-block .new-price {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #2563eb;
+      margin: 4px 0 6px;
+      line-height: 1.1;
+    }
+    .price-block .offer-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #b45309;
+      font-weight: 600;
+      padding: 4px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+    .price-block .btn {
+      margin-top: 14px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
     .benefit-card {
-      background: #f8fafc; padding: 20px; border-radius: 14px; text-align: center;
+      background: white;
+      padding: 24px 16px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e9eef4;
+      transition: all 0.2s;
     }
-    .benefit-icon { font-size: 2rem; margin-bottom: 8px; }
+    .benefit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 20, 50, 0.08);
+      border-color: #b6cbe8;
+    }
+    .benefit-icon {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .benefit-card p {
+      color: #2c3e66;
+      font-size: 0.95rem;
+    }
 
-    /* Preview */
-    .preview { text-align: center; }
+    .preview {
+      text-align: center;
+    }
     .preview img {
-      max-width: 100%; border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.3s;
+    }
+    .preview img:hover {
+      transform: scale(1.01);
+    }
+    .preview p {
+      margin-top: 12px;
+      color: #3b4f72;
     }
 
-    /* Testimonials */
-    .testimonial-grid { display: flex; flex-direction: column; gap: 20px; }
-    .testimonial {
-      background: #fff; border: 1px solid #e5e7eb; padding: 20px;
-      border-radius: 14px; display: flex; gap: 15px; align-items: flex-start;
-    }
-    .avatar { font-size: 2.5rem; background: #eef2ff; width: 50px; height: 50px;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-    /* FAQ */
     details {
-      background: #f9fafb; padding: 15px 20px; border-radius: 12px; margin-bottom: 10px;
+      background: white;
+      padding: 16px 22px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #e9eef4;
+      transition: border 0.2s;
     }
-    summary { font-weight: 600; cursor: pointer; list-style: none; }
+    details:hover {
+      border-color: #b6cbe8;
+    }
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    details p {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #edf2f7;
+      color: #2c3e66;
+    }
 
-    /* CTA */
     .cta {
-      text-align: center; background: linear-gradient(135deg, #eff6ff, #e0e7ff);
-      border-radius: 24px; padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
+      border-radius: 32px;
+      padding: 48px 24px;
+    }
+    .cta h2 {
+      margin-bottom: 12px;
+    }
+    .cta p {
+      max-width: 480px;
+      margin: 0 auto 20px;
+      color: #1e2f4a;
     }
 
-    footer { text-align: center; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e5e7eb; padding-top: 20px; }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7f9c;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 24px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
 
-    @media (max-width: 500px) {
-      .benefits-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 2rem; }
+    @media (max-width: 540px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      .price-block .new-price {
+        font-size: 2.6rem;
+      }
+      .hero {
+        padding: 30px 16px 24px;
+      }
+      .price-block {
+        margin-top: -10px;
+        padding: 24px 16px;
+      }
     }
   </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- Hero -->
+  <!-- Hero (без цены) -->
   <section class="hero">
-    <h1>Stop Overpaying Taxes.<br>Track Deductions Like a Pro.</h1>
+    <div class="badge">🔥 Trusted by 2,500+ freelancers</div>
+    <h1>Stop Overpaying Taxes.<br />Track Deductions Like a Pro.</h1>
     <p class="sub">The simple Google Sheet that saves freelancers $1,000s every year – no accountant needed.</p>
-    <div class="price-box">
-      <div class="old-price">Regular $19</div>
-      <div class="new-price">$7</div>
-      <div style="color:#2563eb; font-weight:500;">🔥 Launch offer – price goes up soon</div>
-    </div>
-    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn">📥 Get Instant Access</a>
-    <p style="margin-top:12px; font-size:0.9rem; color:#6b7280;">Instant copy to your Google Drive • Free updates</p>
   </section>
 
-  <!-- Benefits -->
+  <!-- Блок с ценой (перенесён ниже) -->
+  <section class="price-block">
+    <div class="old-price">Regular $19</div>
+    <div class="new-price">$7</div>
+    <div class="offer-tag">🔥 Launch offer – price goes up soon</div>
+    <br />
+    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn">📥 Get Instant Access</a>
+    <p style="margin-top:12px; font-size:0.9rem; color:#3b5a7a;">Instant copy to your Google Drive • Free updates</p>
+  </section>
+
+  <!-- Преимущества -->
   <section class="benefits">
     <h2>Why Freelancers Love This Tracker</h2>
     <div class="benefits-grid">
@@ -128,35 +322,14 @@
     </div>
   </section>
 
-  <!-- Preview -->
+  <!-- Превью -->
   <section class="preview">
     <h2>Take a Look Inside</h2>
-    <img src="https://placehold.co/600x400/eef2ff/2563eb?text=Tax+Tracker+Spreadsheet+Preview" alt="Spreadsheet preview">
-    <p style="margin-top:10px; color:#6b7280;">Clean, color‑coded tabs – no clutter, just the numbers that matter.</p>
+    <img src="https://placehold.co/600x400/eef2ff/2563eb?text=Tax+Tracker+Spreadsheet+Preview" alt="Spreadsheet preview" loading="lazy" />
+    <p>Clean, color‑coded tabs – no clutter, just the numbers that matter.</p>
   </section>
 
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2>Hear from Fellow Freelancers</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial">
-        <div class="avatar">👩‍💻</div>
-        <div>
-          <strong>Sarah M., Graphic Designer</strong>
-          <p>“Finally a sheet that makes tax season bearable. I found deductions I hadn't even thought of – saved over $800 last year.”</p>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="avatar">🧑‍💼</div>
-        <div>
-          <strong>David R., Marketing Consultant</strong>
-          <p>“I was scared of quarterly taxes. This tracker showed me exactly what I owed. Set up in two minutes. Highly recommend!”</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
+  <!-- FAQ (без отзывов) -->
   <section class="faq">
     <h2>Common Questions</h2>
     <details>
@@ -169,20 +342,20 @@
     </details>
     <details>
       <summary>🔄 What if I'm not satisfied?</summary>
-      <p>We offer a 14-day happiness guarantee. Just reply to your receipt email and we'll refund you.</p>
+      <p>We offer a 14‑day happiness guarantee. Just reply to your receipt email and we'll refund you.</p>
     </details>
   </section>
 
-  <!-- Final CTA -->
+  <!-- Финальный призыв -->
   <section class="cta">
     <h2>Make Tax Time Stress‑Free</h2>
     <p>Join 2,500+ freelancers who already use this tracker. Grab it for $7 today.</p>
-    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn">🚀 Get the Tracker Now</a>
-    <p style="margin-top:12px; font-size:0.9rem;">Instant delivery · 14-day money-back guarantee</p>
+    <a href="https://app.lava.top/products/3dc49dbc-87e1-481c-8a4e-857564700beb" class="btn btn-secondary">🚀 Get the Tracker Now</a>
+    <p style="margin-top:14px; font-size:0.9rem;">Instant delivery · 14‑day money‑back guarantee</p>
   </section>
 
   <footer>
-    <p>© 2026 TaxTracker. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Support</a></p>
+    <p>© 2025 TaxTracker. All rights reserved. | <a href="#">Privacy</a> | <a href="#">Support</a></p>
   </footer>
 
 </div>
